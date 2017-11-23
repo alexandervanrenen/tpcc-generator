@@ -4,7 +4,7 @@ This is a simple tool to create input in [csv](https://en.wikipedia.org/wiki/Com
 
 ## Build
 
-The tool is simply build using make. It requires a C++ compiler which supports c++11.
+The tool can be build using make. It requires a C++ compiler which supports c++11.
 
 ```bash
 make
