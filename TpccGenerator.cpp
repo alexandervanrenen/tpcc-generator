@@ -100,7 +100,7 @@ void TpccGenerator::generateCustomerAndHistory()
    array<char, 2> c_state = {};
    array<char, 9> c_zip = {};
    array<char, 16> c_phone = {};
-   array<char, 11> c_since = {}; // XXX used in history and customer and generated over and over again
+   array<char, 15> c_since = {}; // XXX used in history and customer and generated over and over again
    array<char, 2> c_credit = {};
    int64_t c_credit_lim;
    float c_discount;
@@ -281,7 +281,7 @@ void TpccGenerator::generateOrdersAndOrderLines()
    int64_t o_w_id;
    int64_t o_carrier_id;
    int64_t o_ol_cnt;
-   array<char, 11> o_entry_d = {}; // XXX not sure if date is generate correctly
+   array<char, 15> o_entry_d = {}; // XXX not sure if date is generate correctly
    int64_t o_all_local = 1;
 
    int64_t ol_number;
