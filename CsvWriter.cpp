@@ -14,7 +14,7 @@ CsvWriter::CsvWriter(const string &path)
    if (!out.good()) {
       cout << "\nOh no, I can not create file: '" << path << "'." << std::endl;
       cout << "abooooooorting !!!!!!" << std::endl;
-      throw;
+      exit(-1);
    }
 }
 
