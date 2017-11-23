@@ -1,6 +1,7 @@
 #include "CsvWriter.hpp"
 
 #include <iomanip>
+#include <cstring>
 
 using namespace std;
 
