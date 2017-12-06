@@ -102,7 +102,7 @@ void TpccGenerator::generateCustomerAndHistory()
    array<char, 16> c_phone = {};
    array<char, 15> c_since = {}; // XXX used in history and customer and generated over and over again
    array<char, 2> c_credit = {};
-   int64_t c_credit_lim;
+   float c_credit_lim;
    float c_discount;
    float c_balance;
    array<char, 500> c_data = {};
@@ -135,8 +135,9 @@ void TpccGenerator::generateCustomerAndHistory()
 
             // @formatter:off
             c_csv << c_id << c_d_id << c_w_id << c_first << c_middle << c_last << c_street_1 << c_street_2 << c_city
-                  << c_state << c_zip << c_phone << c_since << c_credit << c_credit_lim << c_discount << c_balance
-                  << 10.0f << int64_t(1) << int64_t(0) << c_data << csv::endl;
+                  << c_state << c_zip << c_phone << c_since << c_credit << csv::Precision(2) << c_credit_lim
+                  << csv::Precision(4) << c_discount << csv::Precision(2) << c_balance << 10.0f << int64_t(1)
+                  << int64_t(0) << c_data << csv::endl;
             // @formatter:on
 
             h_amount = 10.0;
