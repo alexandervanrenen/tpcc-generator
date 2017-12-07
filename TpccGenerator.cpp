@@ -310,7 +310,7 @@ void TpccGenerator::generateOrdersAndOrderLines()
             makeNow(o_entry_d.data());
 
             // @formatter:off
-            o_csv << o_id << o_c_id << o_d_id << o_w_id << o_entry_d << (o_id>2100 ? kNull : to_string(o_carrier_id))
+            o_csv << o_id << o_d_id << o_w_id << o_c_id << o_entry_d << (o_id>2100 ? kNull : to_string(o_carrier_id))
                   << o_ol_cnt << o_all_local << csv::endl;
             // @formatter:on
 
