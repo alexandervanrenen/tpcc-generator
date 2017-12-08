@@ -193,7 +193,7 @@ void TpccGenerator::generateItems()
       }
 
       // @formatter:off
-      i_csv << i_id << i_im_id << i_name << i_price << i_data << csv::endl;
+      i_csv << i_id << i_im_id << i_name << csv::Precision(2) << i_price << i_data << csv::endl;
       // @formatter:on
    }
 
@@ -324,13 +324,13 @@ void TpccGenerator::generateOrdersAndOrderLines()
                   ol_amount = (float) (makeNumber(10L, 10000L)) / 100.0f;
                   // @formatter:off
                   ol_csv << o_id << o_d_id << o_w_id << ol_number << ol_i_id << o_w_id << kNull
-                         << ol_quantity << ol_amount << ol_dist_info << csv::endl;
+                         << ol_quantity << csv::Precision(2) << ol_amount << ol_dist_info << csv::endl;
                   // @formatter:on
                } else {
                   ol_amount = 0.0f;
                   // @formatter:off
                   ol_csv << o_id << o_d_id << o_w_id << ol_number << ol_i_id << o_w_id
-                         << o_entry_d.data() << ol_quantity << ol_amount << ol_dist_info << csv::endl;
+                         << o_entry_d.data() << ol_quantity << csv::Precision(2) << ol_amount << ol_dist_info << csv::endl;
                   // @formatter:on
                }
             }
