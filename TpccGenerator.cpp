@@ -294,6 +294,7 @@ void TpccGenerator::generateOrdersAndOrderLines()
 
    csv::CsvWriter o_csv(folder + "/order.csv");
    csv::CsvWriter ol_csv(folder + "/order_line.csv");
+   csv::CsvWriter no_csv(folder + "/new_order.csv");
 
    // Generate ORD_PER_DIST (3000) orders and order line items for each district
    for (o_w_id = 1L; o_w_id<=warehouse_count; o_w_id++) {
@@ -333,6 +334,11 @@ void TpccGenerator::generateOrdersAndOrderLines()
                          << o_entry_d.data() << ol_quantity << csv::Precision(2) << ol_amount << ol_dist_info << csv::endl;
                   // @formatter:on
                }
+            }
+
+            // Generate a new order entry for the order for the last 900 rows
+            if (o_id>2100) {
+               no_csv << o_id << o_d_id << o_w_id << csv::endl;
             }
          }
       }
