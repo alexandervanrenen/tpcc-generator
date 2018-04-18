@@ -23,6 +23,7 @@ class TpccGenerator {
    uint32_t makeNumberString(uint32_t min, uint32_t max, char *dest);
    uint32_t makeNumber(uint32_t min, uint32_t max);
    uint32_t makeNonUniformRandom(uint32_t A, uint32_t x, uint32_t y);
+   std::vector<uint32_t> makePermutation(uint32_t min, uint32_t max);
    void makeAddress(char *str1, char *street2, char *city, char *state, char *zip);
    void makeLastName(int64_t num, char *name);
    void makeNow(char *str);

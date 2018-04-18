@@ -300,9 +300,7 @@ void TpccGenerator::generateOrdersAndOrderLines()
    for (o_w_id = 1L; o_w_id<=warehouse_count; o_w_id++) {
       for (o_d_id = 1L; o_d_id<=kDistrictsPerWarehouse; o_d_id++) {
          // Each customer has exactly one order
-         vector<uint32_t> customer_id_permutation(kCustomerPerDistrict);
-         iota(customer_id_permutation.begin(), customer_id_permutation.end(), 1);
-         shuffle(customer_id_permutation.begin(), customer_id_permutation.end(), ranny);
+         vector<uint32_t> customer_id_permutation = makePermutation(1, kCustomerPerDistrict + 1);
 
          for (o_id = 1; o_id<=OrdersPerDistrict; o_id++) {
             o_c_id = customer_id_permutation[o_id - 1];
@@ -392,6 +390,19 @@ uint32_t TpccGenerator::makeNumber(uint32_t min, uint32_t max)
 uint32_t TpccGenerator::makeNonUniformRandom(uint32_t A, uint32_t x, uint32_t y)
 {
    return ((makeNumber(0, A) | makeNumber(x, y)) + 42) % (y - x + 1) + x; // XXX
+}
+
+vector<uint32_t> TpccGenerator::makePermutation(uint32_t min, uint32_t max)
+{
+   assert(max>min);
+   const uint32_t count = max - min;
+   vector<uint32_t> result(count);
+   iota(result.begin(), result.end(), min);
+
+   for (uint32_t i = 0; i<count; i++) {
+      swap(result[i], result[ranny() % count]);
+   }
+   return result;
 }
 
 void TpccGenerator::makeLastName(int64_t num, char *name)
