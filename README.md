@@ -1,20 +1,20 @@
 # tpcc-generator
 
-This is a simple tool to create input in [csv](https://en.wikipedia.org/wiki/Comma-separated_values) format for the popular database benchmark TPC-C ([link](http://www.tpc.org/tpcc/)). The implementation is based on the code provided in the TPC-C specification.
+This is a simple tool to create input in [csv](https://en.wikipedia.org/wiki/Comma-separated_values) format for the popular database benchmark [TPC-C](http://www.tpc.org/tpcc/). The implementation is based on the code provided in the TPC-C specification.
 
-## Build
+## Features / Limitations
 
-The tool can be build using make. It requires a C++ compiler which supports c++11.
-
-```bash
-make
-```
+This list might be incomplete.
+- Simple _Makefile_ project with no external dependencies.
+- Stable random: you get the same input data no matter where you run it.
+- __Missing:__ Date fields are dependent on current time and can only be written as time_since_epoch.
 
 ## Run
 
 With the following command you can create TPC-C input with _5_ warehouses. All files are stored in the my_tpcc_input directory. Note: The directory has to exist before starting the generator. But, no worries, if does not exists the generator will complain.
 
 ```bash
+make
 mkdir my_tpcc_input
 ./tpcc-generator 5 my_tpcc_input
 ```
