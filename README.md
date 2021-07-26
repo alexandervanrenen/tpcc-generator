@@ -1,10 +1,17 @@
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+
 # tpcc-generator
 
-This is a simple tool to create input in [csv](https://en.wikipedia.org/wiki/Comma-separated_values) format for the popular database benchmark [TPC-C](http://www.tpc.org/tpcc/). The implementation is based on the code provided in the TPC-C specification.
+A tool to create input for the popular [TPC-C](http://www.tpc.org/tpcc/) database benchmark.
 
-## Features / Limitations
+This project is meant to help people wanting to run TPC-C but not use the official implementation that provides C code in a pdf file and makes use of [embedded SQL](https://en.wikipedia.org/wiki/Embedded_SQL).
+Instead, we strive for a clean, easy to extend implementation in C++.
+We generate portable [csv](https://en.wikipedia.org/wiki/Comma-separated_values) files which can be loaded into any database system.
 
-This list might be incomplete.
+## Features
+
 - Simple _Makefile_ project with no external dependencies.
 - Stable random: you get the same input data no matter where you run it.
 - __Missing:__ Date fields are dependent on current time and can only be written as time_since_epoch.
@@ -19,26 +26,31 @@ mkdir my_tpcc_input
 ./tpcc-generator 5 my_tpcc_input
 ```
 
-## Licence
+Sample output:
+```
+I am loading TPCC data for 5 warehouses, hold on ..
 
-MIT License
+Generating warehouse .. ok !
+Generating districts .. ok !
+Generating customers and their history .. ok !
+Generating items .. ok !
+Generating stocks .. ok !
+Generating orders .. ok !
 
-Copyright (c) 2017 Alexander van Renen
+.. data generation completed successfully :)
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Licence
+-------
+You are free to choose any of the above licences when using the source code.
+However, I encourage you in a non binding way to follow the [blessing from the SQLite folks](https://github.com/sqlite/sqlite/blob/master/LICENSE.md):
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+```
+May you do good and not evil.
+May you find forgiveness for yourself and forgive others.
+May you share freely, never taking more than you give.
+```
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Authors
+-------
+Alexander van Renen
