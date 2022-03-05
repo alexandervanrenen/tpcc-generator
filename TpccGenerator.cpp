@@ -6,6 +6,7 @@
 #include <chrono>
 #include <cassert>
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -100,7 +101,7 @@ void TpccGenerator::generateCustomerAndHistory()
    array<char, 2> c_state = {};
    array<char, 9> c_zip = {};
    array<char, 16> c_phone = {};
-   array<char, 15> c_since = {}; // XXX used in history and customer and generated over and over again
+   array<char, 22> c_since = {};
    array<char, 2> c_credit = {};
    float c_credit_lim;
    float c_discount;
@@ -282,7 +283,7 @@ void TpccGenerator::generateOrdersAndOrderLines()
    int64_t o_w_id;
    int64_t o_carrier_id;
    int64_t o_ol_cnt;
-   array<char, 15> o_entry_d = {}; // XXX not sure if date is generate correctly
+   array<char, 22> o_entry_d = {};
    int64_t o_all_local = 1;
 
    int64_t ol_number;
@@ -415,6 +416,14 @@ void TpccGenerator::makeLastName(int64_t num, char *name)
 
 void TpccGenerator::makeNow(char *str)
 {
-   string s = to_string(chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now().time_since_epoch()).count()); // XXX
-   strncpy(str, s.data(), s.size());
+  time_t now = time(0);
+  tm *ltm = localtime(&now);
+  string year = to_string(1900 + ltm->tm_year); // year since 1900
+  string month = to_string(1 + ltm->tm_mon); // month of year from 0 to 11
+  string day = to_string(ltm->tm_mday);
+  string hour = to_string(ltm->tm_hour);
+  string minute = to_string(ltm->tm_min);
+  string second = to_string(ltm->tm_sec);
+  string s = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second + "+00";
+  strncpy(str, s.data(), s.size());
 }
